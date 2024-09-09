@@ -1,6 +1,6 @@
 import axios from "axios";
 const  request  =  axios.create({
-    baseURL:'https://www.amour-wjx.top', 
+    baseURL:'https://www.amour-wjx.top/api',
     timeout:5000,
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
 })

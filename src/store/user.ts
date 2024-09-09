@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import {  getData } from '../utils/local'
 export const userStore = defineStore('save', {
     actions:{
         save(value:string,role:string){
@@ -8,8 +9,10 @@ export const userStore = defineStore('save', {
     },
     state(){
         return{
-            token:"",
-            role:''
+            token: getData('token').token,
+            role: getData('token').role,
+            user_pic: getData('token').user_pic,
+            userInfo: getData('token')
         }
     }
 })

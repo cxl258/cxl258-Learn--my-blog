@@ -50,10 +50,15 @@ const router = createRouter({
             component:()=>import("@/views/article/index.vue"),
         },
         {
+            path:"/article/editor",
+            name:'articleDetail',
+            component:()=>import("@/views/article/editor.vue"),
+        },
+        {
             path:"/",
             redirect:"/home"
         }
     ]
-}) 
+})
 
 export default router

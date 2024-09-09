@@ -46,11 +46,13 @@
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { login } from '@/api/index'
-import { userStore } from '@/store/user'
-import {  useRouter } from "vue-router"
- let user = userStore()
- let router = useRouter()
+import { login } from "@/api/index";
+import { userStore } from "@/store/user";
+import { useRouter } from "vue-router";
+import { message } from 'ant-design-vue';
+import { setData } from "@/utils/local";
+let user = userStore();
+let router = useRouter();
 interface FormState {
   username: string;
   account: string;
@@ -64,20 +66,26 @@ const formState = reactive<FormState>({
   password: "12345678",
   remember: true,
 });
-const  onFinish = async (values: any) => {
+const onFinish = async (values: any) => {
   // console.log("Success:", values);
- 
-  let data  ={
-    username:values.username,
-    password:values.password,
-    account:values.account
-  }
-  let {data:{token,role}} = await login(data)
+
+  let data = {
+    username: values.username,
+    password: values.password,
+    account: values.account,
+  };
+  let {
+    data: {
+      info,
+    },
+  } = await login(data);
   // console.log(token);
-  user.save(token,role)
+  user.save(info.token, info.role);
+  setData("token", info);
+  // console.log(getData("token"));
   // router.push({path:'/home'})
-  router.back()
-  
+  message.success('登录成功！');
+  router.back();
 };
 
 const onFinishFailed = (errorInfo: any) => {
@@ -86,12 +94,11 @@ const onFinishFailed = (errorInfo: any) => {
 </script>
 <style>
 .login {
-    width:400px;
-    margin:auto;
-    margin-top:100px;
-    
+  width: 400px;
+  margin: auto;
+  margin-top: 100px;
 }
-h2{
-    text-align:center;
+h2 {
+  text-align: center;
 }
 </style>
