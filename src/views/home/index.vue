@@ -57,9 +57,15 @@ getYiyan();
 const Tip = () => {
   message.error("This interface is temporarily unavailable");
 };
-let list = ref<Object>([])
+interface Record {
+  id: number;
+  date: string;
+  title: string;
+  description: string;
+}
+let list = ref<Record[]>([])
 axios.get('./record.json').then(res=>{
-  console.log(res);
+  // console.log(res);
   list.value = res.data.data
 }).catch((err)=>{
   console.log(err);
@@ -73,7 +79,7 @@ axios.get('./record.json').then(res=>{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(https://www.amour-wjx.top:3000/bg.png);
+  background-image: url('https://www.amour-wjx.top/bg.png');
   background-size: cover;
   z-index: -1;
 }

@@ -6,7 +6,6 @@ import Header from '@/components/header.vue' //  引入顶部组件
 <template>
   <Header />
   <RouterView/>
-
 </template>
 
 <style scoped>

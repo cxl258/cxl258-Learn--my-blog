@@ -9,7 +9,7 @@
         <div>上传人:{{ "author" }}</div>
       </div>
       <div class="list_img">
-        <div class="img_item" v-for="item in list" :key="item">
+        <div class="img_item" v-for="item in list" :key="item.filename">
           <img :src="item.filename" alt="" />
         </div>
       </div>
@@ -23,9 +23,12 @@ import Bottom from "@/components/bottom.vue";
 import { ref, toRefs } from "vue";
 import { userStore } from "@/store/user";
 import { getImg } from "@/api/index";
-let list = ref([]);
+interface ImageItem {
+  filename: string;
+}
+let list = ref<ImageItem[]>([]);
 let { userInfo } = toRefs(userStore());
-console.log(userInfo.value.xlid, list);
+// console.log(userInfo.value.xlid, list);
 const getImgList = async () => {
   const res = await getImg({
     xlid: userInfo.value.xlid,
@@ -36,7 +39,7 @@ const getImgList = async () => {
     element.filename = "https://www.amour-wjx.top:3000/" + element.filename;
   }
   list.value = data;
-  console.log(list.value);
+  // console.log(list.value);
 };
 getImgList();
 </script>

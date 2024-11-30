@@ -42,7 +42,7 @@
 
 <script lang="ts" setup>
 import { userStore } from "@/store/user";
-import { toRefs, ref ,watch } from "vue";
+import { toRefs, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 let { role, user_pic } = toRefs(userStore()); //pinia 响应式处理
 let count = ref(0);
@@ -62,12 +62,19 @@ const handleScroll = () => {
     } else {
       isHeight.value = false;
     }
+  }else{
+    isHeight.value = true;
   }
 };
 window.addEventListener("scroll", handleScroll);
-watch(route,()=>{
-  handleScroll()
-},{ deep: true })
+watch(
+  () => route.path,
+  () => {
+    // console.log('route.path');
+    handleScroll();
+  }
+);
+
 </script>
 <style scoped>
 .header {
