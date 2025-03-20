@@ -19,14 +19,14 @@ export const login = (data: any) => {
 // 获取随机一句话
 export const yiyan = () => {
   return request.request({
-    url: "/yiyan",
+    url: "/v1/yiyan",
     method: "get",
   });
 };
 // 获取 图片
 export const getImg = (data: any) => {
   return request.request({
-    url: "/getalbum",
+    url: "/v1/getalbum",
     method: "post",
     data,
   });

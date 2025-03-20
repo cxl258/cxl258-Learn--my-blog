@@ -10,11 +10,11 @@
       </div>
       <div class="api_1" @click="Tip()">
         <div class="api_1_1">
-          <img src="https://www.amour-wjx.top:3000/photo/leishen.jpg" alt="" />
+          <img src="https://diarylodgex.cn/images/leishen.jpg" alt="" />
           <text>壁纸</text>
         </div>
         <div class="api_1_1">
-          <img src="https://www.amour-wjx.top:3000/photo/leishen.jpg" alt="" />
+          <img src="https://diarylodgex.cn/images/leishen.jpg" alt="" />
           <text>新闻</text>
         </div>
       </div>

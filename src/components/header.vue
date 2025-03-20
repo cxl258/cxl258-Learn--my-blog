@@ -5,13 +5,9 @@
     <router-link class="alink" to="/album">相册</router-link>
     <router-link class="alink" to="/documt">文档</router-link>
     <router-link class="alink" to="/about">关于</router-link>
-    <router-link v-if="role == 'admin'" class="alink" to="/admin"
-      >管理</router-link
-    >
+    <router-link v-if="role == 'admin'" class="alink" to="/admin">管理</router-link>
     <div class="right">
-      <router-link to="/login" v-if="role == '' || role == undefined"
-        >登录</router-link
-      >
+      <router-link to="/login" v-if="role == '' || role == undefined">登录</router-link>
       <a-dropdown v-else>
         <a class="ant-dropdown-link" @click.prevent>
           <a-space :size="24">
@@ -44,11 +40,11 @@
 import { userStore } from "@/store/user";
 import { toRefs, ref, watch } from "vue";
 import { useRoute } from "vue-router";
-let { role, user_pic } = toRefs(userStore()); //pinia 响应式处理
+let { role, } = toRefs(userStore()); //pinia 响应式处理
+// user_pic
 let count = ref(0);
 let src = ref<string>("");
-src.value = ("https://www.amour-wjx.top:3000/userpic/" +
-  user_pic.value) as string;
+src.value = "https://diarylodgex.cn/images/leishen.jpg";
 let isHeight = ref(true);
 let scrollTop = 0;
 let route = useRoute();
@@ -62,7 +58,7 @@ const handleScroll = () => {
     } else {
       isHeight.value = false;
     }
-  }else{
+  } else {
     isHeight.value = true;
   }
 };
@@ -91,6 +87,7 @@ watch(
   border-bottom: 1px solid #e5e5e5;
   z-index: 9;
 }
+
 .header1 {
   position: fixed;
   top: 0;
@@ -103,13 +100,16 @@ watch(
   font-weight: bold;
   z-index: 9;
 }
+
 .alink {
   margin-right: 20px;
   color: #000;
 }
+
 .header1 .alink {
   color: #ffffff !important;
 }
+
 .right {
   float: right;
   margin-right: 20px;
